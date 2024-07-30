@@ -4,7 +4,7 @@
 // Restar Balance
 // Crear una cuenta
 import AccountModel from "../models/AccountModel.js";
-class ManagerAcount{
+class ManagerAccount{
     constructor(userID, accountNumber, accountType, balance){
         this.userID = userID;
         this.accountNumber = accountNumber;
@@ -60,17 +60,17 @@ class ManagerAcount{
 
     async createAccount(){
         try {
-            await AccountModel.create({
+            const account = await AccountModel.create({
                 userId: this.userID,
                 accountNumber: this.accountNumber,
                 accountType: this.accountType,
                 balance: this.balance
             });
-            return "Ok";
+            return account;
         } catch (error) {
             throw new Error(`Error al crear cuenta: ${error}`);
         }
     }
 }
 
-export default ManagerAcount;
+export default ManagerAccount;
